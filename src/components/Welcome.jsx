@@ -2,7 +2,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-// ✅ register plugin
+//  register plugin
 gsap.registerPlugin(useGSAP);
 
 const FONT_WEIGHTS = {
@@ -10,7 +10,7 @@ const FONT_WEIGHTS = {
   title: { min: 400, max: 900, default: 400 }
 };
 
-// ✅ split text into spans
+//  split text into spans
 const renderText = (text, className, baseWeight = 400) => {
   return [...text].map((char, i) => (
     <span

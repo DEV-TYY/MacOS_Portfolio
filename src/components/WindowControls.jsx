@@ -11,4 +11,4 @@ const WindowControls = ({ target }) => {
   )
 }
 
-export default WindowControls;
+export default WindowControls;   

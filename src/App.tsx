@@ -1,7 +1,11 @@
+import { Terminal, Safari, Resume, Finder, Text } from "#windows";
 import { Navbar, Welcome, Dock } from "#components";
-import gsap from "gsap";
 import { Draggable } from "gsap/Draggable";
-import { Terminal } from "#windows";
+
+
+
+import gsap from "gsap";
+
 gsap.registerPlugin(Draggable);
 
 function App() {
@@ -11,8 +15,11 @@ function App() {
        <Navbar/>
        <Welcome/>
        <Dock/>
-
-       <Terminal />
+       <Terminal/>
+       <Safari/>
+       <Resume/>
+       <Finder/>
+       <Text/>
    </main>
   )
 }

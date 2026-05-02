@@ -16,10 +16,12 @@ const { name, image, subtitle, description } = data;
         <h2>{name}</h2>
       </div>
 
-      <div className="txtfile-content">
-        {image && (
-          <img src={image} alt={name} className="txtfile-image" />
-        )}
+      <div className="space-y-6 bg-white">
+        <div className="w-full">
+          {image && (
+            <img src={image} alt={name} className="txtfile-image" />
+          )}
+        </div>
 
         {subtitle ? <h3 className="text-lg font-semibold">{subtitle}</h3> : null}
 

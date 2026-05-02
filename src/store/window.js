@@ -14,7 +14,7 @@ const useWindowStore = create(
 
         win.isOpen = true;
         win.zIndex = state.nextZIndex;
-        if (data !== null) win.data = data;   // only update if data is passed
+        if (data !== null) win.data = data; 
 
         state.nextZIndex++;
       }),

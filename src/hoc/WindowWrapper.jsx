@@ -44,7 +44,7 @@ const WindowWrapper = (Component, windowKey) => {
        id={windowKey}
        ref={ref}
        style={{ zIndex}}
-       className="absolute">
+         className="absolute p-5 rounded-lg">
         <Component {... props} />
     </section>
     );

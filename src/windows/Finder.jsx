@@ -36,7 +36,7 @@ const Finder = () => {
                         {item.name}
                     </p>    
                 </li>
-                ))};
+                ))}
             </ul>
         </div>
     );

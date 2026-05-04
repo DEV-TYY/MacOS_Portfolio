@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 import useWindowStore from "#store/window.js"
 
 const Dock = () => {
-  const { openWindow, closeWindow, windows } = useWindowStore();
+  const { openWindow, closeWindow, windows, minimizedWindows } = useWindowStore();
   const dockRef = useRef(null);
 
   useGSAP(() => {
@@ -67,7 +67,7 @@ const Dock = () => {
     const win = windows[app.id];
     if (!win) return;
 
-    if (win.isOpen) {
+    if (win.isOpen && !win.isMinimized) {
       closeWindow(app.id);
     } else {
       openWindow(app.id);
@@ -100,6 +100,9 @@ const Dock = () => {
                   e.target.src = "/images/default-icon.png";
                 }}
               />
+              {minimizedWindows.includes(id) && (
+                <div className="minimized-indicator"></div>
+              )}
             </button>
           </div>
         ))}

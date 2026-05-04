@@ -7,16 +7,22 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "backend": "node server/index.js"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "@tailwindcss/vite": "^4.2.2",
     "clsx": "^2.1.1",
+    "cors": "^2.8.5",
     "dayjs": "^1.11.20",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.4",
     "gsap": "^3.15.0",
     "immer": "^11.1.4",
     "lucide-react": "^1.7.0",
+    "multer": "^2.1.1",
+    "mysql2": "^3.6.5",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-pdf": "^10.4.1",

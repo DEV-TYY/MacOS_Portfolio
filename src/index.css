@@ -41,6 +41,20 @@ body {
   @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
 }
 
+/* Spinning animation for album art */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinning {
+  animation: spin 8s linear infinite;
+}
+
 @layer base {
   main {
     @apply w-dvw h-dvh overflow-hidden;
@@ -100,10 +114,14 @@ body {
     }
 
     .dock-icon {
-      @apply size-14 3xl:size-20 cursor-pointer;
+      @apply size-14 3xl:size-20 cursor-pointer relative;
 
       img {
         @apply object-cover object-center;
+      }
+
+      .minimized-indicator {
+        @apply absolute -bottom-1 left-1/2 -translate-x-1/2 size-1.5 bg-white rounded-full border border-gray-400;
       }
     }
   }
@@ -112,15 +130,25 @@ body {
     @apply flex gap-2;
 
     .close {
-      @apply size-3.5 rounded-full bg-[#ff6157] cursor-pointer;
+      @apply size-3.5 rounded-full bg-[#ff6157] cursor-pointer transition-all duration-200 hover:bg-[#ff6157]/80 hover:scale-110;
     }
 
     .minimize {
-      @apply size-3.5 rounded-full bg-[#ffc030];
+      @apply size-3.5 rounded-full bg-[#ffc030] cursor-pointer transition-all duration-200 hover:bg-[#ffc030]/80 hover:scale-110 relative;
+    }
+
+    .minimize::before {
+      content: '';
+      @apply absolute inset-0 rounded-full opacity-0 transition-opacity duration-200;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+    }
+
+    .minimize:hover::before {
+      @apply opacity-100;
     }
 
     .maximize {
-      @apply size-3.5 rounded-full bg-[#2acb42];
+      @apply size-3.5 rounded-full bg-[#2acb42] cursor-pointer transition-all duration-200 hover:bg-[#2acb42]/80 hover:scale-110;
     }
   }
 
@@ -246,6 +274,23 @@ body {
     }
   }
 
+  #music {
+    @apply w-4xl absolute top-28 left-1/12 rounded-[2rem] overflow-hidden;
+    background: rgba(15, 23, 42, 0.88);
+    background-image: linear-gradient(180deg, rgba(15,23,42,0.92), rgba(15,23,42,0.80));
+    backdrop-filter: blur(28px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 40px 120px -40px rgba(15, 23, 42, 0.9);
+
+    #window-header {
+      @apply bg-slate-950/75 border-b border-white/10 text-white;
+    }
+
+    .grid {
+      @apply bg-transparent;
+    }
+  }
+
   #photos {
     @apply max-w-3xl absolute top-96 left-1/2 -translate-y-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
@@ -259,10 +304,6 @@ body {
       ul {
         li {
           @apply flex space-y-1 items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors;
-
-          &:first-child {
-            @apply bg-blue-100 text-blue-700;
-          }
 
           img {
             @apply w-4;
